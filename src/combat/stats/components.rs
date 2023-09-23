@@ -96,7 +96,7 @@ impl Default for HitStreak {
     fn default() -> HitStreak {
         HitStreak {
             streak: 0,
-            timer: Timer::from_seconds(HIT_STACK_TIMER, TimerMode::Repeating),
+            timer: Timer::from_seconds(HIT_STACK_TIMER, TimerMode::Once),
         }
     }
 }

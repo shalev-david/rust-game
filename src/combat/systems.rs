@@ -1,10 +1,4 @@
-use super::{
-    components::Health,
-    events::DealDamageEvent,
-    stats::{
-        components::CombatStats,
-    },
-};
+use super::{components::Health, events::DealDamageEvent, stats::components::CombatStats};
 use crate::player::components::Player;
 use bevy::prelude::*;
 
@@ -26,7 +20,7 @@ pub fn damage_system(
         }
         if health.0 < damage {
             commands.entity(damage_receiver).despawn();
-            if let Ok(mut combat_stats) = combat_stats_query.get_mut(damage_dealer){
+            if let Ok(mut combat_stats) = combat_stats_query.get_mut(damage_dealer) {
                 combat_stats.kill_entity(damage)
             }
             continue;

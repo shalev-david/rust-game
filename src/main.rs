@@ -9,11 +9,10 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_plugin(RapierDebugRenderPlugin::default())
         .add_plugin(RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.0))
-        .add_plugin(PlayerPlugin{})
-        .add_plugin(CombatPlugin{})
-        .add_startup_system(spawn_camera)
+        .add_plugin(CameraPlugin)
+        .add_plugin(PlayerPlugin)
+        .add_plugin(CombatPlugin)
         .add_startup_system(spawn_floor)
-        // .add_system(combat_system)
         .run();
 }
 
@@ -23,7 +22,7 @@ pub fn spawn_floor(mut commands: Commands, window: Query<&Window, With<PrimaryWi
     commands
         .spawn(Collider::cuboid(500.0, 50.0))
         .insert(TransformBundle::from(Transform::from_xyz(
-            w.width() / 8.0,
+            w.width() / 9.0,
             w.height() / 5.0,
             0.0,
         )));
